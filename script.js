@@ -44,3 +44,23 @@ buttonPrev.addEventListener("mouseenter", function() {
 
 
 
+// AJAX
+
+const listContainer = document.getElementsByClassName("container")[0];
+
+fetch('https://jsonplaceholder.typicode.com/todos')
+  .then(response => response.json())
+  .then(json => {
+    json.map(item => {
+      listContainer.innerHTML += `
+      <article>
+        <div class="article-image">image</div>
+        <div class="article-text">
+          <h1>${item.title}</h1>
+          <p>${item.title}</p>
+          <button class="button-error">Baca selengkapnya...</button>
+        </div>
+      </article>
+      `
+    })
+  })
