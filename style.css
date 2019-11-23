@@ -31,13 +31,11 @@ article .article-image {
 
 @media (max-width: 768px) {
   article {
-    background: blue;
   }
 }
 
 @media (max-width: 576px) {
   article {
-    background: red;
     display: block;
   }
   article .article-image {
@@ -97,4 +95,18 @@ button.button-error {
 
 .slide-3 {
   background: palegreen;
+}
+
+/* custom bootsrap  */
+
+nav.navbar.navbar-light {
+  background: red !important;
+}
+
+.carousel-indicators li {
+  background: red;
+}
+
+.carousel-indicators li.active {
+  background: blue;
 }

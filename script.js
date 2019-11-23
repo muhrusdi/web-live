@@ -1,16 +1,21 @@
 console.log("cek script");
 
+const arr = [1, "elepant", false, {name: "muhammad"}]
+
+// var
+// const 
+// let
+
 const buttonNext = document.getElementById("next");
 const buttonPrev = document.getElementById("prev");
 
 const slider = document.getElementsByClassName("slider")[0];
 
-const sliderItem = slider.children;
+const sliderItem = slider.children; // [slider1, slider2, slider3]
 
 var width = 0
 var slide = false
-
-console.dir(slider)
+var index = 0;
 
 buttonNext.onclick = function() {
   slide = true
@@ -18,24 +23,29 @@ buttonNext.onclick = function() {
     const item = sliderItem[i];
 
     if (slide) {
-      // alert("click")
-      width -= item.clientWidth;
-      slide = false
+      if (index < 2) {
+        width -= item.clientWidth;
+        slide = false;
+        index++;
+      }
     }
 
     item.style.transform = `translateX(${width}px)`;
   }
 }
 
-buttonPrev.addEventListener("mouseenter", function() {
+buttonPrev.addEventListener("click", function() {
   slide = true
   for (let i = 0; i < sliderItem.length; i++) {
     const item = sliderItem[i];
 
     if (slide) {
       console.dir(item)
-      width += item.clientWidth;
-      slide = false
+      if (index > 0) {
+        width += item.clientWidth;
+        slide = false;
+        index--;
+      }
     }
     
     item.style.transform = `translateX(${width}px)`;
@@ -58,7 +68,7 @@ fetch('https://jsonplaceholder.typicode.com/todos')
         <div class="article-text">
           <h1>${item.title}</h1>
           <p>${item.title}</p>
-          <button class="button-error">Baca selengkapnya...</button>
+          <button class="btn btn-primary">Baca selengkapnya...</button>
         </div>
       </article>
       `
